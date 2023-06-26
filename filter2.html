@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filtro</title>
+</head>
+<body>
+  <h1>Matrizes JavaScript</h1>
+  <h2>O método filter()</h2>
+  
+  <p>Clique em "Testar" pa
+    a obter cada elemento na matriz que tenha um valor acima desse número:</p>
+    
+<p><input type="number" id="ageToCheck" value="30"></p>
+<button onclick="myFunction()">Test</button>
+
+<p id="demo"></p>
+
+<script>
+const ages = [32, 33, 12, 40];
+
+function checkAge(age) {
+  return age > document.getElementById("ageToCheck").value;
+}
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = ages.filter(checkAge);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="find.css">
+  <title>Exemplo do método find()</title>
+</head>
+ <body>
+    <script>
+      const tasks = [
+        { id: 1, description: "Lavar a louça", completed: false },
+        { id: 2, description: "Limpar o quarto", completed: false },
+        { id: 3, description: "Fazer compras", completed: false },
+        { id: 4, description: "Estudar para a prova", completed: false },
+        { id: 5, description: "Ler um livro por 1 hora", completed: false },
+        { id: 6, description: "Escrever um diário", completed: false },
+        { id: 7, description: "Limpar e organizar um cômodo da casa", completed: false }
+      ];
+  
+      function findTaskById(id) {
+        return tasks.find(task => task.id === id);
+      }
+  
+      function findCompletedTasks() {
+        const completedTasks = tasks.filter(task => task.completed === true);
+        return completedTasks.length > 0 ? completedTasks : "Nenhuma tarefa concluída encontrada.";
+      }
+  
+      function markTaskAsCompleted(id) {
+        const task = findTaskById(id);
+        if (task) {
+          task.completed = true;
+          console.log(`A tarefa "${task.description}" foi marcada como concluída.`);
+        } else {
+          console.log("Nenhuma tarefa encontrada com o ID informado.");
+        }
+      }
+  
+      window.onload = function() {
+        document.getElementById("markCompletedButton").addEventListener("click", function() {
+          const taskId = parseInt(document.getElementById("taskIdInput").value);
+          markTaskAsCompleted(taskId);
+        });
+  
+        document.getElementById("findCompletedButton").addEventListener("click", function() {
+          const completedTasks = findCompletedTasks();
+          if (Array.isArray(completedTasks)) {
+            const taskList = completedTasks.map(task => task.description).join(", ");
+            document.getElementById("completedTasksList").innerHTML = `Tarefas concluídas: ${taskList}`;
+          } else {
+            document.getElementById("completedTasksList").innerHTML = completedTasks;
+          }
+        });
+      };
+    </script>
+
+    <h2>Gerenciador de Tarefas</h2>
+    
+    <p>Informe o ID da tarefa a ser marcada como concluída:</p>
+    <input type="number" id="taskIdInput" min="1" max="5">
+    <button id="markCompletedButton">Marcar como Concluída</button>
+    
+    <p>Clique no botão abaixo para encontrar as tarefas concluídas:</p>
+    <button id="findCompletedButton">Encontrar Tarefas Concluídas</button>
+    
+    <p id="completedTasksList"></p>
+  
+    <div class="container">
+      <div class="box"></div>
+    </div>
+</body>
+</html>
+

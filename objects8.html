@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+</head>
+<body>
+  <h2>Objetos JavaScript</h2>
+
+  <p>Há duas maneiras diferentes de acessar uma propriedade de objeto.</p>
+
+<p id="demo"></p>
+
+<script>
+// Criando um objeto:
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id     :  5566
+};
+
+//Exiba alguns dados do objeto:
+document.getElementById("demo").innerHTML =
+person["firstName"] + " " + person["lastName"];
+</script>
+    
+</body>
+</html>
